@@ -50,15 +50,20 @@ void tree_print(tree_t *tree) {
 void tree_print2(tree_t *tree) {
     node_t **node = &tree->root;
 
-    while(*node){
+    int count = 0;
+
+    // How many times do we need to go left
+    
+    while(1) {
+        if(&(*node)->value == NULL){
+            break;
+        }
         printf("%d\n", (*node)->value);
+        //while()
         node = &(*node)->left;
+        
     }
 
-    while(*node){
-        printf("%d\n", (*node)->value);
-        node = &(*node)->right;
-    }
 
 }
 
