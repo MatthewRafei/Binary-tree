@@ -48,7 +48,9 @@ void tree_print(tree_t *tree) {
 
 // This doesn't work because it doesn't go back up the tree
 void tree_print2(tree_t *tree) {
-    node_t **node = &tree->root;
+    node_t **root_node = &tree->root;
+    node_t **node = &tree->root->left;
+    node_t **right_node = NULL;
 
     int count = 0;
 
@@ -59,7 +61,14 @@ void tree_print2(tree_t *tree) {
             break;
         }
         printf("%d\n", (*node)->value);
-        //while()
+
+        right_node = &(*node)->right;
+        while(right_node) {
+            right_node = &(*right_node)->right;
+            printf("%d\n", (*right_node)->value);
+        }
+
+
         node = &(*node)->left;
         
     }

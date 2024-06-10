@@ -16,8 +16,8 @@ int main(void)
     tree_insert(&tree, 11);
     tree_insert(&tree, 10);
 
-    /*
-                    9
+    /*              9
+                  /   \
                  /     \
                 3       11
                / \     /  \
