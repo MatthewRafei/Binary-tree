@@ -46,17 +46,15 @@ void tree_print(tree_t *tree) {
     __tree_print(&tree->root);
 }
 
-// This doesn't work because it doesn't go back up the tree
+// Sort by order of insertion lol
 void tree_print2(tree_t *tree) {
 
-    // Left side processing
     node_t **root_node = &tree->root;
     node_t **left_node = &tree->root->left;
     node_t **right_node = NULL;
 
-    int count = 0;
+    printf("%d\n", (*root_node)->value);
 
-    // How many times do we need to go left? Lets make a DynamicArray for this.    
     while(*left_node) {
 
         printf("%d\n", (*left_node)->value);
@@ -65,16 +63,26 @@ void tree_print2(tree_t *tree) {
         while(*right_node) {
             printf("%d\n", (*right_node)->value);
             right_node = &(*right_node)->right;
-            count++;
         }
 
         left_node = &(*left_node)->left;
-        count++;
     }
 
-    printf("\n%d\n", count);
+    right_node = &tree->root->right;
+    left_node = NULL;
+    
+    while(*right_node) {
 
+        printf("%d\n", (*right_node)->value);
+        left_node = &(*right_node)->right;
 
+        while(*left_node) {
+            printf("%d\n", (*left_node)->value);
+            left_node = &(*left_node)->right;
+        }
+
+        right_node = &(*right_node)->left;
+    }
 }
 
 void tree_insert(tree_t *tree, int value){
