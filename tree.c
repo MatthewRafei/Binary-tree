@@ -48,30 +48,31 @@ void tree_print(tree_t *tree) {
 
 // This doesn't work because it doesn't go back up the tree
 void tree_print2(tree_t *tree) {
+
+    // Left side processing
     node_t **root_node = &tree->root;
-    node_t **node = &tree->root->left;
+    node_t **left_node = &tree->root->left;
     node_t **right_node = NULL;
 
     int count = 0;
 
-    // How many times do we need to go left
-    
-    while(1) {
-        if(&(*node)->value == NULL){
-            break;
-        }
-        printf("%d\n", (*node)->value);
+    // How many times do we need to go left? Lets make a DynamicArray for this.    
+    while(*left_node) {
 
-        right_node = &(*node)->right;
-        while(right_node) {
-            right_node = &(*right_node)->right;
+        printf("%d\n", (*left_node)->value);
+        right_node = &(*left_node)->right;
+
+        while(*right_node) {
             printf("%d\n", (*right_node)->value);
+            right_node = &(*right_node)->right;
+            count++;
         }
 
-
-        node = &(*node)->left;
-        
+        left_node = &(*left_node)->left;
+        count++;
     }
+
+    printf("\n%d\n", count);
 
 
 }
