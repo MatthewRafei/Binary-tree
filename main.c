@@ -9,22 +9,47 @@ int main(void)
     
     tree_t tree = tree_create();
 
-    tree_insert(&tree, 9);
-    tree_insert(&tree, 3);
-    tree_insert(&tree, 4);
-    tree_insert(&tree, 2);
-    tree_insert(&tree, 1);
-    tree_insert(&tree, 11);
-    tree_insert(&tree, 10);
+    tree_insert(&tree, 100);
+    tree_insert(&tree, 50);
+    tree_insert(&tree, 150);
+    tree_insert(&tree, 25);
+    tree_insert(&tree, 75);
+    tree_insert(&tree, 140);
+    tree_insert(&tree, 170);
+    tree_insert(&tree, 15);
+    tree_insert(&tree, 30);
+    tree_insert(&tree, 80);
+    tree_insert(&tree, 180);
+    tree_insert(&tree, 171);
+    tree_insert(&tree, 172);
+    tree_insert(&tree, 173);
+    tree_insert(&tree, 174);
+    tree_insert(&tree, 176);
+    tree_insert(&tree, 175);
+    tree_insert(&tree, 178);
 
-    /*              9
+    /*             100
                   /   \
                  /     \
-                3       11
+                50      150
                / \     /  \
-              2   4   10   NULL
-             / \ / \ /  \
-            1 NULL NULL NULL
+             25   75  140  170
+            / \    \         \
+          15  30    80       180
+                             /
+                           171
+                             \
+                             172
+                               \ 
+                               173
+                                 \
+                                 174
+                                   \
+                                   176
+                                   /  \
+                                 175   178
+
+
     */
 
     tree_print(&tree);

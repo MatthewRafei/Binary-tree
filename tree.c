@@ -46,6 +46,7 @@ void tree_print(tree_t *tree) {
     __tree_print(&tree->root);
 }
 
+
 // Sort by order of insertion lol
 void tree_print2(tree_t *tree) {
 
@@ -68,6 +69,10 @@ void tree_print2(tree_t *tree) {
         left_node = &(*left_node)->left;
     }
 
+    printf("\n");
+
+    // Somethings not quite right with code below
+    // It doesn't go through nodes on the left like the above one does with right
     right_node = &tree->root->right;
     left_node = NULL;
     
@@ -84,6 +89,7 @@ void tree_print2(tree_t *tree) {
         right_node = &(*right_node)->left;
     }
 }
+
 
 void tree_insert(tree_t *tree, int value){
     node_t **node = &tree->root;
