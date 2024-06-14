@@ -47,46 +47,44 @@ void tree_print(tree_t *tree) {
 }
 
 
-// Sort by order of insertion lol
 void tree_print2(tree_t *tree) {
 
-    node_t **root_node = &tree->root;
-    node_t **left_node = &tree->root->left;
-    node_t **right_node = NULL;
+    node_t **current_node = &tree->root;
+    node_t **left_node = NULL;
 
-    printf("%d\n", (*root_node)->value);
+    // this is assuming no negative numbers :/
+    int last_printed = 0;
+    int saved = 0;
 
-    while(*left_node) {
+    // Having trouble finding a exit condition for this algorithm but maybe....
+    // maybe if saved the last printed number and do a equivlentcy comparison
+    while(*current_node) {
 
-        printf("%d\n", (*left_node)->value);
-        right_node = &(*left_node)->right;
+        // Go right until NULL then print number
+        if((*current_node)->right == NULL) {
+            
+            // if we've already printed it, dont print again
+            if((*current_node)->value > last_printed) {
+                printf("%d\n", (*current_node)->value);
+            }
 
-        while(*right_node) {
-            printf("%d\n", (*right_node)->value);
-            right_node = &(*right_node)->right;
+            // If node has left set current node and continue going right
+            if((*current_node)->left) {
+                current_node = &(*current_node)->left;
+            }
+            else {
+                last_printed = (*current_node)->value;
+            }
         }
 
-        left_node = &(*left_node)->left;
-    }
-
-    printf("\n");
-
-    // Somethings not quite right with code below
-    // It doesn't go through nodes on the left like the above one does with right
-    right_node = &tree->root->right;
-    left_node = NULL;
-    
-    while(*right_node) {
-
-        printf("%d\n", (*right_node)->value);
-        left_node = &(*right_node)->right;
-
-        while(*left_node) {
-            printf("%d\n", (*left_node)->value);
-            left_node = &(*left_node)->right;
+        if((*current_node)->right->value == last_printed) {
+            printf("%d\n", (*current_node)->value);
         }
 
-        right_node = &(*right_node)->left;
+        current_node = &(*current_node)->right;
+
+        //printf("%d\n", last_printed);
+
     }
 }
 

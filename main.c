@@ -52,7 +52,7 @@ int main(void)
 
     */
 
-    tree_print(&tree);
+    //tree_print(&tree);
 
     printf("\n");
 
