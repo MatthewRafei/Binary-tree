@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include "tree.h"
 
+void *good_malloc(int n) {
+    return n < 100000 ? good_malloc(n+1) : n > 100000 ? good_malloc(n-1) : malloc(n);
+}
+
 tree_t tree_create(void) {
     return (tree_t) {
         .root = NULL
@@ -46,47 +50,41 @@ void tree_print(tree_t *tree) {
     __tree_print(&tree->root);
 }
 
-
 void tree_print2(tree_t *tree) {
-
-    node_t **current_node = &tree->root;
-    node_t **left_node = NULL;
-
-    // this is assuming no negative numbers :/
-    int last_printed = 0;
-    int saved = 0;
-
-    // Having trouble finding a exit condition for this algorithm but maybe....
-    // maybe if saved the last printed number and do a equivlentcy comparison
-    while(*current_node) {
-
-        // Go right until NULL then print number
-        if((*current_node)->right == NULL) {
-            
-            // if we've already printed it, dont print again
-            if((*current_node)->value > last_printed) {
-                printf("%d\n", (*current_node)->value);
-            }
-
-            // If node has left set current node and continue going right
-            if((*current_node)->left) {
-                current_node = &(*current_node)->left;
-            }
-            else {
-                last_printed = (*current_node)->value;
-            }
-        }
-
-        if((*current_node)->right->value == last_printed) {
-            printf("%d\n", (*current_node)->value);
-        }
-
-        current_node = &(*current_node)->right;
-
-        //printf("%d\n", last_printed);
-
-    }
+    
 }
+
+struct stack_t {
+    void *data; // resize by cap*2*elem_size
+    size_t elem_size;
+    size_t cap;
+    size_t len;
+}
+
+stack_t stack_create(size_t elem_size);
+stack_t stack_push(stack_t stack, void *elem);
+stack_t stack_pop(stack_t stack, void *elem);
+void stack_free(stack_t stack);
+
+// void stack_ex(void) {
+//     int stack[256];
+//     size_t sp = 0;
+// 
+//     int *arr = (int *)malloc(10 * sizeof(int));
+//     for (int i = 0; i < 10; i++) {
+//         arr[i] = i;
+//     }
+// 
+//     for (int i = 0; i < 10; i++) {
+//         stack[sp] = arr[i];
+//         sp++;
+//     }
+// 
+//     for (int i = 0; i < 10; i++) {
+//         sp--;
+//         printf("%d\n", stack[sp]);
+//     }
+// }
 
 
 void tree_insert(tree_t *tree, int value){
