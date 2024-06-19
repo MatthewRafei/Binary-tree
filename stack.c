@@ -30,7 +30,7 @@ void stack_print(stack_t stack) {
 
     void *elem = stack.data
 
-    stdlib
+    
 
 
 }
