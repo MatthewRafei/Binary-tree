@@ -1,0 +1,115 @@
+/*                 100
+                  /   \
+                 /     \
+                50      150
+               / \     /  \
+             25   75  140  170
+            / \    \         \
+          15  30    80       180
+                            /
+                           171
+                             \
+                             172
+                               \ 
+                               173
+                                 \
+                                 174
+                                   \
+                                   176
+                                   /  \
+                                 175   178
+*/
+
+/*
+// O(log n)
+13
+        9
+       / \
+      2   12
+    /  \    13
+   1    6
+         \
+          7
+
+              V
+[img1, img2, img3]
+
+// O(n)
+lst = [9 2 6 7 1]
+for all i in lst:
+  if lst[i] == 7: return i;
+
+    {3,2,7,15,18,19,1,9,13,17}
+    sort = O(n log n)
+
+                  v
+    {1,2,3,7,9,13,15,17,18,19}
+
+    O(log n)
+
+    O(n log^2n)
+
+    depth first search
+    breadth first search
+    dijsktras algorithm
+    A*
+    Prim's minimum spanning tree
+
+        N   N
+       / \ /
+      N   N
+     / \ / \
+    N  N N  N
+*/
+
+// void stack_ex(void) {
+//     int stack[256];
+//     size_t sp = 0;
+// 
+//     int *arr = (int *)malloc(10 * sizeof(int));
+//     for (int i = 0; i < 10; i++) {
+//         arr[i] = i;
+//     }
+// 
+//     for (int i = 0; i < 10; i++) {
+//         stack[sp] = arr[i];
+//         sp++;
+//     }
+// 
+//     for (int i = 0; i < 10; i++) {
+//         sp--;
+//         printf("%d\n", stack[sp]);
+//     }
+// }
+
+//void __tree_insert(node_t **cur, int value) {
+//    if (!*cur) {
+//        *cur = node_alloc(value);
+//    } else if (value > (*cur)->value) {
+//        __tree_insert(&(*cur)->right, value);
+//    } else if (value < (*cur)->value) {
+//        __tree_insert(&(*cur)->left, value);
+//    } else {
+//        assert(0 && "duplicate node in tree");
+//    }
+//}
+
+//void tree_insert2(tree_t *tree, int value) {
+//    __tree_insert(&tree->root, value);
+//}
+
+//void __tree_print(node_t **cur) {
+//    if (!*cur)
+//        return;
+//    __tree_print(&(*cur)->right);
+//    printf("%d\n", (*cur)->value);
+//    __tree_print(&(*cur)->left);
+//}
+
+//void tree_print(tree_t *tree) {
+//    __tree_print(&tree->root);
+//}
+
+//void *good_malloc(int n) {
+//    return n < 100000 ? good_malloc(n+1) : n > 100000 ? good_malloc(n-1) : malloc(n);
+//}
