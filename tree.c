@@ -21,7 +21,6 @@ void tree_insert(tree_t *tree, int value){
     node_t **node = &tree->root;
 
     while(*node){
-
         if((*node)->value < value){
             node = &(*node)->right;
         }

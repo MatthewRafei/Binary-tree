@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tree.h"
+#include "stack.h"
 
 int main(void) {
+  
+  /*
   tree_t tree = tree_create();
 
   tree_insert(&tree, 100);
@@ -25,6 +28,16 @@ int main(void) {
   tree_insert(&tree, 178);
 
   tree_print(&tree);
+  */
+
+  stack_t stack = stack_create();
+
+  int eight = 8;
+  int *p = &eight;
+  stack_push(stack, p);
+
+
+
 
   return 0;
 }
