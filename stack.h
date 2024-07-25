@@ -3,16 +3,15 @@
 #include <stdio.h>
 #include "tree.h"
 
-typedef struct stack_t {
-    int *data; // resize by cap*2*elem_size
-    size_t len;
-    struct stack_t *next;
-} stack_t;
+typedef struct stack_bt {
+  struct node_t *head;
+  size_t stride;
+} stack_bt;
 
-stack_t stack_create();
-stack_t stack_push(stack_t stack, node_t *elem);
-stack_t stack_pop(stack_t stack, node_t *elem);
-void stack_free(stack_t stack);
-void stack_print(stack_t stack);
+stack_bt stack_create();
+void stack_push(stack_bt *stack, node_t *value);
+void stack_pop(stack_bt *stack, node_t *value);
+void *stack_top(stack_bt *stack);
+int stack_empty(stack_bt *stack);
 
 #endif // STACK_H

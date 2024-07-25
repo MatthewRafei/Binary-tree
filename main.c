@@ -14,9 +14,12 @@ int main(void) {
 
   tree_print(&tree);
 
-  stack_t stack = stack_create();
+  stack_bt stack = stack_create();
 
-  stack_push(stack, tree.root);
+
+  printf("Is the stack empty? : %d\n", stack_empty(&stack));
+
+  stack_push(&stack, tree.root);
 
   return 0;
 }
