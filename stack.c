@@ -1,37 +1,45 @@
-#include <bits/types/stack_t.h>
-#include <stdlib.h>
 #include "stack.h"
 #include "tree.h"
+#include <assert.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 stack_bt stack_create() {
     stack_bt stack;
     stack.head = NULL;
-    stack.stride = 0;
-
     return stack;
 }
 
+static stack_node *stack_node_alloc(node_t *tree_node) {
+
+    stack_node *node = (stack_node *)malloc(sizeof(stack_node));
+    //printf("bytes: %zu\n", sizeof(stack_node));
+
+    node->value = tree_node;
+
+    return node;
+
+}
+
 int stack_empty(stack_bt *stack) {
-    return (stack->head == NULL) ? 1 : 0;
+    return !stack->head;
 }
 
-void stack_push(stack_bt *stack, node_t *value) {
+void stack_push(stack_bt *stack, struct node_t *node) {
+    stack_node *tmp = stack->head;
+    stack->head = stack_node_alloc(node);
+    stack->head->next = tmp;
+}
 
-    //stack->head = value;
-    for(int i = 0; i < stack->stride; i++) {
-        //stack
+node_t *stack_pop(stack_bt *stack) {
+
+    if(stack_empty(stack)){
+        printf("This stack is empty\n");
+        return NULL;
     }
 
+    stack_node *tmp = stack->head;
+    stack->head = stack->head->next;
 
-}
-
-void stack_pop(stack_bt *stack, node_t *value) {
-    if(stack_empty(stack) == 0){
-        printf("This stack is empty");
-        return;
-    }
-}
-
-void stack_print(stack_t stack) {
-
+    return tmp->value;
 }

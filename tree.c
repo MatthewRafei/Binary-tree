@@ -1,6 +1,8 @@
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "tree.h"
+#include "stack.h"
 
 tree_t tree_create(void) {
     return (tree_t) {
@@ -35,6 +37,28 @@ void tree_insert(tree_t *tree, int value){
     *node = node_alloc(value);
 }
 
-void tree_print(tree_t *tree) {
-    
+#if 1
+void tree_print(tree_t *tree, stack_bt *stack) {
+    node_t *current = tree->root;
+
+    while(1) {
+        if(current != NULL) {
+            // stack_push(stack, &current->value);
+            stack_push(stack, current);
+            current = current->left;
+        }
+        else{
+            if(!stack_empty(stack)) {
+                current = stack_pop(stack);
+                //assert(current);
+                printf("current: %d\n", current->value);
+                current = current->right;
+            }
+            else{
+
+                break;
+            }
+        }
+    }
 }
+#endif

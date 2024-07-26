@@ -1,5 +1,6 @@
 #ifndef TREE_H
 #define TREE_H
+#include "stack.h"
 
 typedef struct node_t {
     int value;
@@ -14,8 +15,10 @@ typedef struct tree_t {
 tree_t tree_create(void);
 node_t *node_alloc(int value);
 void tree_insert(tree_t *tree, int value);
-void tree_print(tree_t *tree);
 void tree_remove(tree_t *tree, int value); // remove `value` from the tree
 void tree_free(tree_t *tree); // free all memory allocated from the nodes
+
+void tree_print(tree_t *tree, stack_bt *stack);
+
 
 #endif // TREE_H
