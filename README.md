@@ -1,1 +1,1 @@
-This was project was intentially over complicated so I could gain more experince with pointers and data structures.
+This was project was intentionally overcomplicated so I could gain more experience with pointers and data structures.
