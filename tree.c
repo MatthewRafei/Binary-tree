@@ -39,26 +39,39 @@ void tree_insert(tree_t *tree, int value){
 
 #if 1
 void tree_print(tree_t *tree, stack_bt *stack) {
+
+    node_t *tmp = NULL;
     node_t *current = tree->root;
 
     while(1) {
-        if(current != NULL) {
-            // stack_push(stack, &current->value);
+        if(current) {
             stack_push(stack, current);
             current = current->left;
         }
         else{
             if(!stack_empty(stack)) {
-                current = stack_pop(stack);
-                //assert(current);
+                stack_pop(stack);
+                current = stack_top(stack);
                 printf("current: %d\n", current->value);
                 current = current->right;
             }
             else{
-
                 break;
             }
         }
     }
+}
+#endif
+
+#if 0
+void tree_delete(node_t *node) {
+
+    if (node == NULL) {
+        return;
+    }
+
+    printf("%d\n", node->value);
+    tree_delete(node->left);
+    tree_delete(node->right);
 }
 #endif

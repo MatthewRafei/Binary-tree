@@ -20,5 +20,7 @@ void tree_free(tree_t *tree); // free all memory allocated from the nodes
 
 void tree_print(tree_t *tree, stack_bt *stack);
 
+void tree_delete(node_t *node);
+
 
 #endif // TREE_H
